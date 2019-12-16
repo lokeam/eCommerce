@@ -16,6 +16,9 @@ const Navigation = () => (
       <Link to='/contact' className='nav__linkWrapper'>
         contact
       </Link>
+      <Link to='/signin' className='nav__linkWrapper'>
+        sign in
+      </Link>
     </div>
   </div>
 );
