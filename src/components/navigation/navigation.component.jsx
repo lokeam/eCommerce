@@ -2,9 +2,11 @@ import React from 'react';
 import { ReactComponent as Logo } from '../../static/svg/logo.svg';
 import { Link } from 'react-router-dom';
 
+import { auth } from '../../firebase/firebase.utils';
+
 import styles from './navigation.styles.scss';
 
-const Navigation = () => (
+const Navigation = ({ currentUser }) => (
   <div className='nav'>
     <Link to='/' className='logo__wrapper' to='/'>
       <Logo className='logo' />
@@ -16,9 +18,14 @@ const Navigation = () => (
       <Link to='/contact' className='nav__linkWrapper'>
         contact
       </Link>
-      <Link to='/signin' className='nav__linkWrapper'>
-        sign in
-      </Link>
+
+      { currentUser ?
+        <div className='nav_linkWrappper'
+             onClick={ () => auth.signOut() }>Sign out</div>
+        :
+        <Link className='nav_linkWrappper'
+              to='/signin'>Sign In</Link> }
+
     </div>
   </div>
 );

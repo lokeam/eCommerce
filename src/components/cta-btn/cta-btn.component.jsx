@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './cta-btn.styles.scss';
 
-const CTABtn = ( {children, ...otherProps} ) => (
-  <button className="ctabtn" {...otherProps}>
+const CTABtn = ({ children, isGoogleSignIn, ...otherProps }) => (
+  <button
+    className={`${isGoogleSignIn ? 'google-sign-in' : ''} ctabtn`}
+    {...otherProps}
+  >
     {children}
   </button>
 );
