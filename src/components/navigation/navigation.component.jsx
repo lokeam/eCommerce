@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../../static/svg/logo.svg';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
 
@@ -30,4 +31,8 @@ const Navigation = ({ currentUser }) => (
   </div>
 );
 
-export default Navigation;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Navigation);
