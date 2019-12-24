@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import styles from './navigation.styles.scss';
 
-const Navigation = ({ currentUser }) => (
+const Navigation = ({ currentUser, hidden }) => (
   <div className='nav'>
     <Link to='/' className='logo__wrapper' to='/'>
       <Logo className='logo' />
@@ -27,12 +29,18 @@ const Navigation = ({ currentUser }) => (
         <Link className='nav_linkWrappper'
               to='/signin'>Sign In</Link> }
 
+      <CartIcon />
     </div>
+    {
+      hidden ? null : <CartDropdown />
+    }
+
   </div>
 );
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: {hidden} }) => ({
+  currentUser,
+  hidden
 });
 
 export default connect(mapStateToProps)(Navigation);

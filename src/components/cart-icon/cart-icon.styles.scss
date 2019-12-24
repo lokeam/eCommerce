@@ -1,0 +1,27 @@
+.cart-icon {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .nav-cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .item-count {
+    border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    padding-top: 0;
+    right: 3px;
+    top: -3px;
+    color: #fff;
+    background: #fa5400;
+  }
+}
