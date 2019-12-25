@@ -1,11 +1,17 @@
 import React from 'react';
 import styles from './cta-btn.styles.scss';
 
-const CTABtn = ({ children, isGoogleSignIn, ...otherProps }) => (
+const CTABtn = ({
+  children,
+  isGoogleSignIn,
+  inverted,
+  ...otherProps
+}) => (
   <button
-    className={`${isGoogleSignIn ? 'google-sign-in' : ''} ctabtn`}
-    {...otherProps}
-  >
+    className={`${inverted ? 'inverted' : ''} ${
+      isGoogleSignIn ? 'google-sign-in' : ''
+    } cta-btn`}
+    {...otherProps} >
     {children}
   </button>
 );
