@@ -1,12 +1,24 @@
 import React from 'react';
-import CTABtn from '../cta-btn/cta-btn.component';
-import styles from './cart-dropdown.styles.scss';
+import { connect } from 'react-redux';
 
-const CartDropdown = () => (
-  <div className="cart-dropdown">
-    <div className="cart-items"></div>
-    <CTABtn>Go to checkout</CTABtn>
+import CTABtn from '../cta-btn/cta-btn.component';
+import CartItem from '../cart-item/cart-item.component';
+
+import './cart-dropdown.styles.scss';
+
+const CartDropdown = ({ cartItems }) => (
+  <div className='cart-dropdown'>
+    <div className='cart-items'>
+      {cartItems.map(cartItem => (
+        <CartItem key={cartItem.id} item={cartItem} />
+      ))}
+    </div>
+    <CTABtn>GO TO CHECKOUT</CTABtn>
   </div>
 );
 
-export default CartDropdown;
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+  cartItems
+});
+
+export default connect(mapStateToProps)(CartDropdown);
