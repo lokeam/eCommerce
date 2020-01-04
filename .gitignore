@@ -18,7 +18,9 @@
 .env.test.local
 .env.production.local
 
+# api keys
 /src/firebase/firebase.config.js
+/src/components/stripe-key.js
 
 npm-debug.log*
 yarn-debug.log*
